@@ -8,6 +8,7 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
@@ -17,7 +18,7 @@ import java.util.Objects;
  */
 @XmlRootElement
 @Entity
-public class Rental {
+public class Rental implements Serializable{
     @Id
     @SequenceGenerator(name="Game_Gen", allocationSize=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Game_Gen") 
