@@ -7,6 +7,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
@@ -32,6 +33,8 @@ public class Game implements Serializable{
     private Type type;
     @Enumerated(EnumType.STRING)
     private Console console;
+    @ManyToOne
+    private Rental rental;
     public enum Type{
         ACTION,
         HORROR,
