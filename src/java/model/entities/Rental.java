@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -18,6 +19,9 @@ import java.util.List;
  */
 @XmlRootElement
 @Entity
+@NamedQuery(name="addRental",
+        query = "INSERT INTO Rental(price, date) VALUES (:price, :date) RETURNING id, price, date;")
+
 public class Rental implements Serializable{
     @Id
     @SequenceGenerator(name="Rental_Gen", allocationSize=1)
