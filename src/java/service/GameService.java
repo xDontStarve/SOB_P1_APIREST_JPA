@@ -39,6 +39,8 @@ public class GameService extends AbstractFacade<Game>{
     return games;
     }
     
+    
+    
     @POST
     @Path("{game}")
     @Consumes({MediaType.APPLICATION_JSON})
@@ -52,4 +54,10 @@ public class GameService extends AbstractFacade<Game>{
         return em;
     }
     
+    public  List<Game> findGameSpecs(Game.Type type, Game.Console console){
+        return null;
+    }
+    public  void addGame(Game entity){
+        
+    }
 }

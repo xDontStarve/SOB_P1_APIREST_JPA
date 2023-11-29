@@ -20,4 +20,11 @@ public class RentalService extends AbstractFacade<Rental>{
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+    public void addRental(Rental entity){
+        
+    }
+    public Rental findRental(Object id){
+        return null;
+    }
 }

@@ -50,4 +50,13 @@ public class CustomerService extends AbstractFacade<Customer>{
     protected EntityManager getEntityManager() {
         return em;
     }
+    public List<Customer> findCustomers(){
+        return null;
+    }
+    public List<Customer> findClient(Object id){
+        return null;
+    }
+    public void addClient(Customer entity){
+        
+    }
 }

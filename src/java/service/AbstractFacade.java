@@ -66,13 +66,5 @@ public abstract class AbstractFacade<T> {
         return ((Long) q.getSingleResult()).intValue();
     }
     
-    public abstract List<T> findGameSpecs(T type, T console);
-    public abstract void addGame(Game entity);
-    public abstract void addRental(Rental entity);
-    public abstract T findRental(Object id);
-    public abstract List<T> findCustomers();
-    public abstract List<T> findClient(Object id);
-    public abstract void addClient(Customer entity);
-    
     
 }
