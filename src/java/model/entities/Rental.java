@@ -20,8 +20,8 @@ import java.util.List;
 @Entity
 public class Rental implements Serializable{
     @Id
-    @SequenceGenerator(name="Game_Gen", allocationSize=1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Game_Gen") 
+    @SequenceGenerator(name="Rental_Gen", allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Rental_Gen") 
     private long id;
     private float price;
     private Date date;

@@ -15,9 +15,9 @@ public class CustomerService extends AbstractFacade<Customer>{
     public CustomerService() {
         super(Customer.class);
     }
-
+    
     @Override
     protected EntityManager getEntityManager() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return em;
     }
 }

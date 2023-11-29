@@ -18,8 +18,8 @@ import java.util.List;
 @Entity
 public class Customer implements Serializable{
     @Id
-    @SequenceGenerator(name="Game_Gen", allocationSize=1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Game_Gen") 
+    @SequenceGenerator(name="Customer_Gen", allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Customer_Gen") 
     private long id;
     private String username;
     private String password;
