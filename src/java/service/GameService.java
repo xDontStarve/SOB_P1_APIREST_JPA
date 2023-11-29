@@ -1,183 +1,75 @@
+package service;
 
-package model.entities;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.NamedQuery;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.xml.bind.annotation.XmlRootElement;
-import java.io.Serializable;
-import java.util.Objects;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import java.util.List;
+import model.entities.Game;
+import model.entities.Game.Console;
+import model.entities.Game.Type;
 
 /**
  *
- * @author Jialiang Chen
+ * @author Jialiang
  */
-
-@NamedQuery(name = "findGameSpecs",
-            query = "SELECT g FROM Game g WHERE (:genre IS NULL OR g.genre = :genre) AND (:consoleType IS NULL OR g.consoleType = :consoleType) ORDER BY g.title ASC")
-
-@XmlRootElement
-@Entity
-public class Game implements Serializable{
-    @Id
-    @SequenceGenerator(name="Game_Gen", allocationSize=1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Game_Gen") 
-    private long id;
-    private String name;
-    private boolean isAvailable;
-    private float price;
-    private String description;
-    private String address;
-    @Enumerated(EnumType.STRING)
-    private Type type;
-    @Enumerated(EnumType.STRING)
-    private Console console;
-    @ManyToOne
-    private Rental rental;
-    public enum Type{
-        ACTION,
-        HORROR,
-        FAMILY,
-        RACING,
-        SHOOTER,
-        ADVENTURE
+public class GameService extends AbstractFacade<Game>{
+    @PersistenceContext(unitName = "Homework1PU")
+    private EntityManager em;
+    
+    public GameService() {
+        super(Game.class);
     }
-    public enum Console{
-        NDS,
-        GBA,
-        GB,
-        PS1,
-        PS2,
-        PS3,
-        PS4
+    
+    @GET
+    @Path("/{type}/{console}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    public List<Game> findAll(@PathParam("type") Type type, @PathParam("console") Console console){
+    List<Game> games = super.findAll();
+    
+    for(int i = 0; i< games.size(); i++){
+        if(games.get(i).getType().equals(type) || games.get(i).getConsole().equals(console)){
+            games.remove(games.get(i));   
+        }
     }
-    public Game(){
-
+    return games;
     }
     
     
     
-    public Game (long id){
-        this.id=id;
-    }
-    
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Console getConsole() {
-        return console;
-    }
-
-    public void setConsole(Console console) {
-        this.console = console;
-    }
-
-    public boolean isIsAvailable() {
-        return isAvailable;
-    }
-
-    public void setIsAvailable(boolean isAvailable) {
-        this.isAvailable = isAvailable;
-    }
-
-    public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Type getType() {
-        return type;
-    }
-
-    public void setType(Type type) {
-        this.type = type;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-    
-        @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 17 * hash + Objects.hashCode(this.name);
-        hash = 17 * hash + Objects.hashCode(this.console);
-        hash = 17 * hash + (this.isAvailable ? 1 : 0);
-        hash = 17 * hash + Float.floatToIntBits(this.price);
-        hash = 17 * hash + Objects.hashCode(this.description);
-        hash = 17 * hash + Objects.hashCode(this.type);
-        hash = 17 * hash + Objects.hashCode(this.address);
-        hash = 17 * hash + (int) (this.id ^ (this.id >>> 32));
-        return hash;
-    }
-
+    @POST
+    @Path("{game}")
+    @Consumes({MediaType.APPLICATION_JSON})
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Game other = (Game) obj;
-        if (this.isAvailable != other.isAvailable) {
-            return false;
-        }
-        if (Float.floatToIntBits(this.price) != Float.floatToIntBits(other.price)) {
-            return false;
-        }
-        if (this.id != other.id) {
-            return false;
-        }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.console, other.console)) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        if (!Objects.equals(this.type, other.type)) {
-            return false;
-        }
-        return Objects.equals(this.address, other.address);
+    public void create(@PathParam("game") Game entity) {
+        super.create(entity);
+    }
+    
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/game/{console}/{type}")
+    public Response findGameSpecs(Game.Type type, Game.Console console){
+        TypedQuery<Game> query = getEntityManager().createNamedQuery("findGameSpecs", Game.class);
+        query.setParameter("type", type);
+        query.setParameter("console", console);
+        
+        return Response.ok(query.getResultList()).build();
+    }
+    
+    public  void addGame(Game entity){
+        
     }
 }
