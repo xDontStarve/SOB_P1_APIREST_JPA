@@ -24,7 +24,7 @@ public class RentalService extends AbstractFacade<Rental>{
     public void addRental(Rental entity){
         
     }
-    public Rental findRental(Object id){
+    public Rental findRental(long id){
         return null;
     }
 }
