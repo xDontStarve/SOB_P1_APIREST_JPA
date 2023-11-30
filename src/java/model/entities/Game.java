@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
@@ -17,6 +18,10 @@ import java.util.Objects;
  *
  * @author Jialiang Chen
  */
+@NamedQuery(
+    name = "findGameGenreConsole",
+    query = "SELECT g FROM Game g WHERE (:genre IS NULL OR g.genre = :genre) AND (:console IS NULL OR g.console = :console) ORDER BY g.name ASC"
+)
 @XmlRootElement
 @Entity
 public class Game implements Serializable{
@@ -30,12 +35,12 @@ public class Game implements Serializable{
     private String description;
     private String address;
     @Enumerated(EnumType.STRING)
-    private Type type;
+    private Genre genre;
     @Enumerated(EnumType.STRING)
     private Console console;
     @ManyToOne
     private Rental rental;
-    public enum Type{
+    public enum Genre{
         ACTION,
         HORROR,
         FAMILY,
@@ -102,12 +107,12 @@ public class Game implements Serializable{
         this.description = description;
     }
 
-    public Type getType() {
-        return type;
+    public Genre getGenre() {
+        return genre;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setGenre(Genre genre) {
+        this.genre = genre;
     }
 
     public String getAddress() {
