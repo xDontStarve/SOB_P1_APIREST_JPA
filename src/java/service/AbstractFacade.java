@@ -7,11 +7,6 @@ package service;
 
 import java.util.List;
 import jakarta.persistence.EntityManager;
-import model.entities.Customer;
-import model.entities.Game;
-import model.entities.Game.Console;
-import model.entities.Game.Type;
-import model.entities.Rental;
 
 /**
  *

@@ -19,9 +19,6 @@ import java.util.List;
  */
 @XmlRootElement
 @Entity
-@NamedQuery(name="addRental",
-        query = "INSERT INTO Rental(price, date) VALUES (:price, :date) RETURNING id, price, date;")
-
 public class Rental implements Serializable{
     @Id
     @SequenceGenerator(name="Rental_Gen", allocationSize=1)
