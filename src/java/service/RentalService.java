@@ -12,7 +12,7 @@ import model.entities.Rental;
  * @author Jialiang
  */
 @Stateless
-@Path("Rental")
+@Path("/rest/api/v1/Rental")
 public class RentalService extends AbstractFacade<Rental> {
     @PersistenceContext(unitName = "Homework1PU")
     private EntityManager em;

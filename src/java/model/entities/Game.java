@@ -39,6 +39,10 @@ import java.util.Objects;
     name = "findAllGames",
     query= "SELECT g FROM Game g ORDER BY g.name ASC"
 )
+@NamedQuery(
+    name = "findSameGame",
+    query = "SELECT g FROM Game g WHERE (g.console = :console) AND (g.genre = :genre) AND (g.address = :address) AND (g.name = :name) AND (g.isAvailable = :isAvailable) AND (g.description = :description) AND (g.price = :price)"
+)
 @XmlRootElement
 @Entity
 public class Game implements Serializable{
@@ -107,7 +111,7 @@ public class Game implements Serializable{
         this.console = console;
     }
 
-    public boolean isIsAvailable() {
+    public boolean getIsAvailable() {
         return isAvailable;
     }
 

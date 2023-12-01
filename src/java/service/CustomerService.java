@@ -11,7 +11,7 @@ import model.entities.Customer;
  * @author Jialiang
  */
 @Stateless
-@Path("Customer")
+@Path("/rest/api/v1/Customer")
 public class CustomerService extends AbstractFacade<Customer> {
     @PersistenceContext(unitName = "Homework1PU")
     private EntityManager em;
