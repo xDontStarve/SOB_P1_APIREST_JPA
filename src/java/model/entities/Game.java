@@ -1,17 +1,22 @@
 
 package model.entities;
 
+import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -25,6 +30,7 @@ import java.util.Objects;
 @XmlRootElement
 @Entity
 public class Game implements Serializable{
+    
     @Id
     @SequenceGenerator(name="Game_Gen", allocationSize=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Game_Gen") 
@@ -38,8 +44,14 @@ public class Game implements Serializable{
     private Genre genre;
     @Enumerated(EnumType.STRING)
     private Console console;
-    @ManyToOne
-    private Rental rental;
+    @ManyToMany
+    @JoinTable(
+        name = "game_rental",
+        joinColumns = @JoinColumn(name = "game_id"),
+        inverseJoinColumns = @JoinColumn(name = "rental_id")
+    )
+    @JsonbTransient
+    private List<Rental> rentals;
     public enum Genre{
         ACTION,
         HORROR,

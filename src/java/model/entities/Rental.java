@@ -1,9 +1,13 @@
 package model.entities;
 
+import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
@@ -26,9 +30,10 @@ public class Rental implements Serializable{
     private long id;
     private float price;
     private Date date;
+    private Date returnDate;
     @ManyToOne
     private Customer customer;
-    @OneToMany(mappedBy="rental")
+    @ManyToMany(mappedBy="rentals")
     private List<Game> games;
 
     public long getId() {

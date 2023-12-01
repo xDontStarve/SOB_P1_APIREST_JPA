@@ -11,6 +11,7 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import model.entities.Comment;
@@ -41,10 +42,12 @@ public class GameService extends AbstractFacade<Game> {
     @GET
     @Path("{type}/{console}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findGameGenreConsole(@PathParam("genre") Game.Genre genre, @PathParam("console") Game.Console console){
+    public Response findGameGenreConsole(@QueryParam("genre") String genre, @QueryParam("console") String console){
+        Game.Console gameConsole = Game.Console.valueOf(genre);
+        Game.Genre gameGenre= Game.Genre.valueOf(console);
         Query query = em.createNamedQuery("findGameGenreConsole");
-        query.setParameter("genre", genre);
-        query.setParameter("console", console);
+        query.setParameter("genre", gameGenre);
+        query.setParameter("console", gameConsole);
         return Response.ok(query.getResultList()).build();
     }
     
