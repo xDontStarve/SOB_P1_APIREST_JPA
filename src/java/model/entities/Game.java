@@ -24,8 +24,20 @@ import java.util.Objects;
  * @author Jialiang Chen
  */
 @NamedQuery(
-    name = "findGameGenreConsole",
-    query = "SELECT g FROM Game g WHERE (:genre IS NULL OR g.genre = :genre) AND (:console IS NULL OR g.console = :console) ORDER BY g.name ASC"
+    name = "findGamesByGenreAndConsole",
+    query = "SELECT g FROM Game g WHERE (g.genre = :genre) AND (g.console = :console) ORDER BY g.name ASC"
+)
+@NamedQuery(
+    name = "findGamesByGenre",
+    query = "SELECT g FROM Game g WHERE (g.genre = :genre) ORDER BY g.name ASC"
+)
+@NamedQuery(
+    name = "findGamesByConsole",
+    query = "SELECT g FROM Game g WHERE (g.console = :console) ORDER BY g.name ASC"
+)
+@NamedQuery(
+    name = "findAllGames",
+    query= "SELECT g FROM Game g ORDER BY g.name ASC"
 )
 @XmlRootElement
 @Entity

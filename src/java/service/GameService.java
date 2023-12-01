@@ -40,16 +40,30 @@ public class GameService extends AbstractFacade<Game> {
     
     
     @GET
-    @Path("{type}/{console}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findGameGenreConsole(@QueryParam("genre") String genre, @QueryParam("console") String console){
-        Game.Console gameConsole = Game.Console.valueOf(genre);
-        Game.Genre gameGenre= Game.Genre.valueOf(console);
-        Query query = em.createNamedQuery("findGameGenreConsole");
-        query.setParameter("genre", gameGenre);
-        query.setParameter("console", gameConsole);
+        Game.Console gameConsole;
+        Game.Genre gameGenre;
+        Query query;
+        if (console==null && genre!=null){
+            query = em.createNamedQuery("findGamesByGenre");
+            gameGenre = Game.Genre.valueOf(genre);
+            query.setParameter("genre", gameGenre);
+        }
+        else if (console!=null && genre==null){
+            query = em.createNamedQuery("findGamesByConsole");
+            gameConsole = Game.Console.valueOf(console);
+            query.setParameter("console", gameConsole);
+        }
+        else if (console!=null && genre!=null){
+            query = em.createNamedQuery("findGamesByGenreAndConsole");
+            gameConsole = Game.Console.valueOf(console);
+            gameGenre = Game.Genre.valueOf(genre);
+            query.setParameter("genre", gameGenre);
+            query.setParameter("console", gameConsole);
+        }else{
+            query = em.createNamedQuery("findAllGames");
+        }
         return Response.ok(query.getResultList()).build();
     }
-    
-    
 }
