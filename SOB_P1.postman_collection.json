@@ -1,0 +1,600 @@
+{
+	"info": {
+		"_postman_id": "3ae0c9ca-3244-40c5-a700-e9697bf93431",
+		"name": "SOB_P1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31492401"
+	},
+	"item": [
+		{
+			"name": "GAME",
+			"item": [
+				{
+					"name": "GAME_getAll",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/SOB_P1_APIREST_JPA/webresources/rest/api/v1/game",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SOB_P1_APIREST_JPA",
+								"webresources",
+								"rest",
+								"api",
+								"v1",
+								"game"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GAME_getGenre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/SOB_P1_APIREST_JPA/webresources/rest/api/v1/game?genre=HORROR",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SOB_P1_APIREST_JPA",
+								"webresources",
+								"rest",
+								"api",
+								"v1",
+								"game"
+							],
+							"query": [
+								{
+									"key": "genre",
+									"value": "HORROR"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GAME_getConsole",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/SOB_P1_APIREST_JPA/webresources/rest/api/v1/game?console=PS1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SOB_P1_APIREST_JPA",
+								"webresources",
+								"rest",
+								"api",
+								"v1",
+								"game"
+							],
+							"query": [
+								{
+									"key": "console",
+									"value": "PS1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GAME_getGenre&Console",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/SOB_P1_APIREST_JPA/webresources/game?genre=HORROR&console=GB",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SOB_P1_APIREST_JPA",
+								"webresources",
+								"game"
+							],
+							"query": [
+								{
+									"key": "genre",
+									"value": "HORROR"
+								},
+								{
+									"key": "console",
+									"value": "GB"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GAME_getWrongParam",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/SOB_P1_APIREST_JPA/webresources/rest/api/v1/game?console=PS5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SOB_P1_APIREST_JPA",
+								"webresources",
+								"rest",
+								"api",
+								"v1",
+								"game"
+							],
+							"query": [
+								{
+									"key": "console",
+									"value": "PS5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GAME_addJSON",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "sob",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "sob",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"address\":\"Carrer Tarradellas\",\"console\":\"GB\",\"description\":\"JSON Game ADD\",\"genre\":\"FAMILY\",\"isAvailable\":true,\"name\":\"I LOVE SOB\",\"price\":100.0}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/SOB_P1_APIREST_JPA/webresources/game",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SOB_P1_APIREST_JPA",
+								"webresources",
+								"game"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GAME_addJSON Same",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "sob",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "sob",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"address\":\"Carrer Tarradellas\",\"console\":\"GB\",\"description\":\"JSON Game ADD\",\"genre\":\"FAMILY\",\"isAvailable\":true,\"name\":\"I LOVE SOB\",\"price\":100.0}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/SOB_P1_APIREST_JPA/webresources/rest/api/v1/game",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SOB_P1_APIREST_JPA",
+								"webresources",
+								"rest",
+								"api",
+								"v1",
+								"game"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GAME_addXML",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "sob",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "sob",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "<game>\r\n    <address>Tarragona</address>\r\n    <console>PS4</console>\r\n    <description>XML Game ADD</description>\r\n    <genre>ADVENTURE</genre>\r\n    <isAvailable>true</isAvailable>\r\n    <name>I WANNA LOVE SOB</name>\r\n    <price>0.010</price>\r\n</game>\r\n",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/SOB_P1_APIREST_JPA/webresources/rest/api/v1/game",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SOB_P1_APIREST_JPA",
+								"webresources",
+								"rest",
+								"api",
+								"v1",
+								"game"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CUSTOMER",
+			"item": [
+				{
+					"name": "CUSTOMER_getAll",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "CUSTOMER_getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/SOB_P1_APIREST_JPA/webresources/rest/api/v1/customer?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SOB_P1_APIREST_JPA",
+								"webresources",
+								"rest",
+								"api",
+								"v1",
+								"customer"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CUSTOMER_getById Wrong",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/SOB_P1_APIREST_JPA/webresources/rest/api/v1/customer/100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SOB_P1_APIREST_JPA",
+								"webresources",
+								"rest",
+								"api",
+								"v1",
+								"customer",
+								"100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CUSTOMER_putById",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "sob",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "sob",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":5,\"username\":\"ya no ser rubiuz\",\"password\":\"newPassWordxd\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/SOB_P1_APIREST_JPA/webresources/rest/api/v1/customer/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SOB_P1_APIREST_JPA",
+								"webresources",
+								"rest",
+								"api",
+								"v1",
+								"customer",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CUSTOMER_putById New Customer",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "sob",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "sob",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":69,\"password\":\"ILikeLeagueOfLegendsxd\",\"username\":\"TheDestroyer420\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/SOB_P1_APIREST_JPA/webresources/rest/api/v1/customer/69",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SOB_P1_APIREST_JPA",
+								"webresources",
+								"rest",
+								"api",
+								"v1",
+								"customer",
+								"69"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RENTAL",
+			"item": [
+				{
+					"name": "RENTAL_getById",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "sob",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "sob",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/SOB_P1_APIREST_JPA/webresources/rest/api/v1/rental/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SOB_P1_APIREST_JPA",
+								"webresources",
+								"rest",
+								"api",
+								"v1",
+								"rental",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RENTAL_getById Wrong",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "sob",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "sob",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/SOB_P1_APIREST_JPA/webresources/rest/api/v1/rental/1000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SOB_P1_APIREST_JPA",
+								"webresources",
+								"rest",
+								"api",
+								"v1",
+								"rental",
+								"1000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RENTAL_postRental",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "sob",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "sob",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rental\":{\r\n        \"id\":13,\r\n        \"price\":0.75,\r\n        \"date\":\"2022-03-28T17:12:57Z[UTC]\",\r\n        \"returnDate\":\"2023-03-28T17:12:57Z[UTC]\",\r\n        \"customer\":{\"id\":5,\"username\":\"ER RUVIUZ\",\"password\":\"88888888.\"}\r\n    },\r\n    \"gameIDs\":[1,2,3,4,5]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/SOB_P1_APIREST_JPA/webresources/rest/api/v1/rental",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SOB_P1_APIREST_JPA",
+								"webresources",
+								"rest",
+								"api",
+								"v1",
+								"rental"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
