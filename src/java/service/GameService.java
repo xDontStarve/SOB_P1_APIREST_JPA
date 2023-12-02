@@ -20,7 +20,7 @@ import model.entities.Game;
 
 /**
  *
- * @author Jialiang
+ * @author Jialiang Chen
  */
 @Stateless
 @Path("/rest/api/v1/game")

@@ -9,7 +9,7 @@ import model.entities.Rental;
 
 /**
  *
- * @author Jialiang
+ * @author Jialiang Chen
  */
 @Stateless
 @Path("/rest/api/v1/Rental")

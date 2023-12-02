@@ -8,7 +8,7 @@ import model.entities.Customer;
 
 /**
  *
- * @author Jialiang
+ * @author Jialiang Chen
  */
 @Stateless
 @Path("/rest/api/v1/Customer")

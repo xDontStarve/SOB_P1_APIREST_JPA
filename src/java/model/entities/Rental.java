@@ -11,7 +11,10 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Transient;
+import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;
@@ -31,11 +34,19 @@ public class Rental implements Serializable{
     private float price;
     private Date date;
     private Date returnDate;
-    @ManyToOne
+    @NotNull
+    @OneToOne 
     private Customer customer;
-    @ManyToMany(mappedBy="rentals")
+    @ManyToMany
+    @JoinTable(
+        name = "game_rental",
+        joinColumns = @JoinColumn(name = "rental_id"),
+        inverseJoinColumns = @JoinColumn(name = "game_id")
+    )
+    @JsonbTransient
     private List<Game> games;
 
+    
     public long getId() {
         return id;
     }
@@ -59,5 +70,30 @@ public class Rental implements Serializable{
     public void setDate(Date date) {
         this.date = date;
     }
+
+    public Date getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(Date returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public List<Game> getGames() {
+        return games;
+    }
+
+    public void setGames(List<Game> games) {
+        this.games = games;
+    }
+    
     
 }

@@ -11,13 +11,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Objects;
 
 /**
  *
@@ -60,13 +58,7 @@ public class Game implements Serializable{
     private Genre genre;
     @Enumerated(EnumType.STRING)
     private Console console;
-    @ManyToMany
-    @JoinTable(
-        name = "game_rental",
-        joinColumns = @JoinColumn(name = "game_id"),
-        inverseJoinColumns = @JoinColumn(name = "rental_id")
-    )
-    @JsonbTransient
+    @ManyToMany(mappedBy="games")
     private List<Rental> rentals;
     public enum Genre{
         ACTION,
@@ -158,4 +150,13 @@ public class Game implements Serializable{
     public void setId(long id) {
         this.id = id;
     }
+
+    public List<Rental> getRentals() {
+        return rentals;
+    }
+
+    public void setRentals(List<Rental> rentals) {
+        this.rentals = rentals;
+    }
+    
 }

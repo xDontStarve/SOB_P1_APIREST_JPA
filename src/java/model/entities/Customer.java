@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
@@ -23,8 +24,8 @@ public class Customer implements Serializable{
     private long id;
     private String username;
     private String password;
-    @OneToMany(mappedBy="customer")
-    private List<Rental> rentals;
+    @OneToOne(mappedBy = "customer")
+    private Rental rental;
 
     public long getId() {
         return id;
@@ -48,6 +49,14 @@ public class Customer implements Serializable{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Rental getRental() {
+        return rental;
+    }
+
+    public void setRental(Rental rental) {
+        this.rental = rental;
     }
     
 }
