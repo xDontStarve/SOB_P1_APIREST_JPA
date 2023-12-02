@@ -58,7 +58,13 @@ public class Game implements Serializable{
     private Genre genre;
     @Enumerated(EnumType.STRING)
     private Console console;
-    @ManyToMany(mappedBy="games")
+    @ManyToMany
+    @JoinTable(
+        name = "game_rental",
+        joinColumns = @JoinColumn(name = "game_id"),
+        inverseJoinColumns = @JoinColumn(name = "rental_id")
+    )
+    @JsonbTransient
     private List<Rental> rentals;
     public enum Genre{
         ACTION,

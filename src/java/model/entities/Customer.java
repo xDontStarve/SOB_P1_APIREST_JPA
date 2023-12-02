@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
@@ -15,6 +16,10 @@ import java.util.List;
  *
  * @author Jialiang Chen
  */
+@NamedQuery(
+    name="findById",
+    query="SELECT c FROM Customer c WHERE (c.id = :id)"
+)
 @XmlRootElement
 @Entity
 public class Customer implements Serializable{

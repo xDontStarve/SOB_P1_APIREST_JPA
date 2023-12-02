@@ -24,6 +24,11 @@ import java.util.List;
  *
  * @author Jialiang Chen
  */
+@NamedQuery(
+    name="findRentalById",
+    query="SELECT r FROM Rental r WHERE (r.id = :id)"
+)
+
 @XmlRootElement
 @Entity
 public class Rental implements Serializable{
@@ -37,14 +42,9 @@ public class Rental implements Serializable{
     @NotNull
     @OneToOne 
     private Customer customer;
-    @ManyToMany
-    @JoinTable(
-        name = "game_rental",
-        joinColumns = @JoinColumn(name = "rental_id"),
-        inverseJoinColumns = @JoinColumn(name = "game_id")
-    )
-    @JsonbTransient
+    @ManyToMany(mappedBy="rentals")
     private List<Game> games;
+
 
     
     public long getId() {

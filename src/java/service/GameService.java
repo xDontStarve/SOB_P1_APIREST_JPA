@@ -64,24 +64,41 @@ public class GameService extends AbstractFacade<Game> {
     public Response findGameGenreConsole(@QueryParam("genre") String genre, @QueryParam("console") String console){
         Game.Console gameConsole;
         Game.Genre gameGenre;
+        try {
+        // Validate and convert genre parameter
+            if (genre != null) {
+                gameGenre = Game.Genre.valueOf(genre);
+            }
+        // Validate and convert console parameter
+            if (console != null) {
+                gameConsole = Game.Console.valueOf(console);
+            }
+        } catch (IllegalArgumentException e) {
+        // Handle invalid enum constant
+            return Response.status(Response.Status.BAD_REQUEST).entity("Invalid parameters. Genre or console value is not valid.").build();
+        }
         Query query;
         if (console==null && genre!=null){
+        // Return all because no params set
             query = em.createNamedQuery("findGamesByGenre");
             gameGenre = Game.Genre.valueOf(genre);
             query.setParameter("genre", gameGenre);
         }
         else if (console!=null && genre==null){
+        // Return Game with matching genre
             query = em.createNamedQuery("findGamesByConsole");
             gameConsole = Game.Console.valueOf(console);
             query.setParameter("console", gameConsole);
         }
         else if (console!=null && genre!=null){
+        // Return Game with matching console
             query = em.createNamedQuery("findGamesByGenreAndConsole");
             gameConsole = Game.Console.valueOf(console);
             gameGenre = Game.Genre.valueOf(genre);
             query.setParameter("genre", gameGenre);
             query.setParameter("console", gameConsole);
         }else{
+        // Return game with matching genre and console.
             query = em.createNamedQuery("findAllGames");
         }
         return Response.ok(query.getResultList()).build();
