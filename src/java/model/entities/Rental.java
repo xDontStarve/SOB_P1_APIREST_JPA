@@ -95,5 +95,8 @@ public class Rental implements Serializable{
         this.games = games;
     }
     
+    public void addGames(Game game){
+        this.games.add(game);
+    }
     
 }

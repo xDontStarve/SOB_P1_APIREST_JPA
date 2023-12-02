@@ -53,7 +53,7 @@ public class CustomerService extends AbstractFacade<Customer> {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCustomer(@PathParam("id") Long id){
-        Query query = em.createNamedQuery("findById");
+        Query query = em.createNamedQuery("findCustomerById");
         query.setParameter("id", id);
         List<Customer> customers = query.getResultList();
         //Only 1 customer may be found with the ID.
@@ -69,7 +69,7 @@ public class CustomerService extends AbstractFacade<Customer> {
     @Secured
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Response putCustomer(@PathParam("id") Long id, Customer c){
-        Query query = em.createNamedQuery("findById");
+        Query query = em.createNamedQuery("findCustomerById");
         query.setParameter("id", id);
         if (query.getResultStream().toList().isEmpty()){
             em.persist(c);

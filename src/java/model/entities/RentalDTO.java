@@ -20,7 +20,9 @@ public class RentalDTO {
         this.price=rental.getPrice();
         this.date=rental.getDate();
     }
-    
+    public RentalDTO(){
+        
+    }
     public long getId() {
         return id;
     }

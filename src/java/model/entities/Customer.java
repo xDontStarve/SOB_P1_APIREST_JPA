@@ -17,7 +17,7 @@ import java.util.List;
  * @author Jialiang Chen
  */
 @NamedQuery(
-    name="findById",
+    name="findCustomerById",
     query="SELECT c FROM Customer c WHERE (c.id = :id)"
 )
 @XmlRootElement

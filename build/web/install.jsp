@@ -58,9 +58,21 @@
                 "INSERT INTO " + schema + ".RENTAL (ID, DATE, PRICE, RETURNDATE, CUSTOMER_ID) VALUES (NEXT VALUE FOR RENTAL_GEN, TIMESTAMP('2023-05-22 09:29:35'), 7.5, TIMESTAMP('2023-12-10 09:55:26'), 1)",
                 "INSERT INTO " + schema + ".GAME_RENTAL (RENTAL_ID, GAME_ID) VALUES (1, 5)",
                 "INSERT INTO " + schema + ".GAME_RENTAL (RENTAL_ID, GAME_ID) VALUES (2, 4)",
-                "INSERT INTO " + schema + ".GAME_RENTAL (RENTAL_ID, GAME_ID) VALUES (3, 3)",
+                "INSERT INTO " + schema + ".GAME_RENTAL (RENTAL_ID, GAME_ID) VALUES (2, 3)",
                 "INSERT INTO " + schema + ".GAME_RENTAL (RENTAL_ID, GAME_ID) VALUES (4, 2)",
-                "INSERT INTO " + schema + ".GAME_RENTAL (RENTAL_ID, GAME_ID) VALUES (5, 1)"
+                "INSERT INTO " + schema + ".GAME_RENTAL (RENTAL_ID, GAME_ID) VALUES (4, 3)",
+                "INSERT INTO " + schema + ".GAME_RENTAL (RENTAL_ID, GAME_ID) VALUES (7, 4)"/*,
+                "INSERT INTO " + schema + ".GAME_RENTAL (RENTAL_ID, GAME_ID) VALUES (7, 5)",
+                "INSERT INTO " + schema + ".GAME_RENTAL (RENTAL_ID, GAME_ID) VALUES (1, 2)",
+                "INSERT INTO " + schema + ".GAME_RENTAL (RENTAL_ID, GAME_ID) VALUES (2, 1)",
+                "INSERT INTO " + schema + ".GAME_RENTAL (RENTAL_ID, GAME_ID) VALUES (3, 1)",
+                "INSERT INTO " + schema + ".GAME_RENTAL (RENTAL_ID, GAME_ID) VALUES (5, 5)",
+                "INSERT INTO " + schema + ".GAME_RENTAL (RENTAL_ID, GAME_ID) VALUES (6, 2)",
+                "INSERT INTO " + schema + ".GAME_RENTAL (RENTAL_ID, GAME_ID) VALUES (9, 3)",
+                "INSERT INTO " + schema + ".GAME_RENTAL (RENTAL_ID, GAME_ID) VALUES (8, 4)",
+                "INSERT INTO " + schema + ".GAME_RENTAL (RENTAL_ID, GAME_ID) VALUES (7, 1)",
+                "INSERT INTO " + schema + ".GAME_RENTAL (RENTAL_ID, GAME_ID) VALUES (5, 4)"
+                */
             };
             for (String datum : data) {
                 if (stmt.executeUpdate(datum)<=0) {

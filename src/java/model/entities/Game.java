@@ -41,6 +41,10 @@ import java.util.List;
     name = "findSameGame",
     query = "SELECT g FROM Game g WHERE (g.console = :console) AND (g.genre = :genre) AND (g.address = :address) AND (g.name = :name) AND (g.isAvailable = :isAvailable) AND (g.description = :description) AND (g.price = :price)"
 )
+@NamedQuery(
+    name = "findGameById",
+    query= "SELECT g FROM Game g WHERE (g.id = :id)"
+)
 @XmlRootElement
 @Entity
 public class Game implements Serializable{
@@ -163,6 +167,10 @@ public class Game implements Serializable{
 
     public void setRentals(List<Rental> rentals) {
         this.rentals = rentals;
+    }
+    
+    public void addRental(Rental rental) {
+        this.rentals.add(rental);
     }
     
 }
