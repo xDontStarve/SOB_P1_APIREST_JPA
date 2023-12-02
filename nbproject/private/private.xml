@@ -3,18 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/chali/OneDrive/Documents/URV/GEI4/SOB/SOB_P1_APIREST_JPA/src/java/model/entities/Game.java</file>
-            <file>file:/C:/Users/chali/OneDrive/Documents/URV/GEI4/SOB/SOB_P1_APIREST_JPA/src/java/service/AbstractFacade.java</file>
-            <file>file:/C:/Users/chali/OneDrive/Documents/URV/GEI4/SOB/SOB_P1_APIREST_JPA/src/java/service/CustomerService.java</file>
-            <file>file:/C:/Users/chali/OneDrive/Documents/URV/GEI4/SOB/SOB_P1_APIREST_JPA/src/java/model/entities/RentalDTO.java</file>
-            <file>file:/C:/Users/chali/OneDrive/Documents/URV/GEI4/SOB/SOB_P1_APIREST_JPA/src/java/service/RESTapp.java</file>
-            <file>file:/C:/Users/chali/OneDrive/Documents/URV/GEI4/SOB/SOB_P1_APIREST_JPA/src/java/service/GameService.java</file>
-            <file>file:/C:/Users/chali/OneDrive/Documents/URV/GEI4/SOB/SOB_P1_APIREST_JPA/src/java/service/CommentFacadeREST.java</file>
-            <file>file:/C:/Users/chali/OneDrive/Documents/URV/GEI4/SOB/SOB_P1_APIREST_JPA/src/java/service/RentalService.java</file>
-            <file>file:/C:/Users/chali/OneDrive/Documents/URV/GEI4/SOB/SOB_P1_APIREST_JPA/src/java/model/entities/Rental.java</file>
-            <file>file:/C:/Users/chali/OneDrive/Documents/URV/GEI4/SOB/SOB_P1_APIREST_JPA/src/java/model/entities/CustomerDTO.java</file>
-            <file>file:/C:/Users/chali/OneDrive/Documents/URV/GEI4/SOB/SOB_P1_APIREST_JPA/src/java/model/entities/RentalGamesWrapper.java</file>
-            <file>file:/C:/Users/chali/OneDrive/Documents/URV/GEI4/SOB/SOB_P1_APIREST_JPA/src/java/model/entities/Customer.java</file>
+            <file>file:/C:/Users/chali/OneDrive/Documents/URV/GEI4/SOB/SOB_P1_APIREST_JPA/web/install.jsp</file>
+            <file>file:/C:/Users/chali/OneDrive/Documents/URV/GEI4/SOB/SOB_P1_APIREST_JPA/web/index.html</file>
+            <file>file:/C:/Users/chali/OneDrive/Documents/URV/GEI4/SOB/SOB_P1_APIREST_JPA/src/conf/persistence.xml</file>
+            <file>file:/C:/Users/chali/OneDrive/Documents/URV/GEI4/SOB/SOB_P1_APIREST_JPA/web/WEB-INF/glassfish-resources.xml</file>
         </group>
     </open-files>
 </project-private>
