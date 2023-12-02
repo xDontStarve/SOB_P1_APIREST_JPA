@@ -45,11 +45,7 @@ public class RentalService extends AbstractFacade<Rental> {
     @Produces(MediaType.APPLICATION_JSON)
     public Response postRental(RentalGamesWrapper rentalGamesWrapper){
         Rental rental = rentalGamesWrapper.getRental();
-        //Check if rental already exists
-        if (!em.createNamedQuery("findRentalById").setParameter("id", rental.getId()).getResultList().isEmpty()){
-            return Response.status(Response.Status.CONFLICT).entity("The rental already exists").build();
-        }
-        
+        super.create(rental);
         List<Long> gameIDs = rentalGamesWrapper.getGameIDs();
         //Reset List (cannot pass the entire game list in json, too expensive)
         rental.setGames(new LinkedList());

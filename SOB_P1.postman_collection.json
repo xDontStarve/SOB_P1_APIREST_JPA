@@ -568,7 +568,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"rental\":{\r\n        \"id\":13,\r\n        \"price\":0.75,\r\n        \"date\":\"2022-03-28T17:12:57Z[UTC]\",\r\n        \"returnDate\":\"2023-03-28T17:12:57Z[UTC]\",\r\n        \"customer\":{\"id\":5,\"username\":\"ER RUVIUZ\",\"password\":\"88888888.\"}\r\n    },\r\n    \"gameIDs\":[1,2,3,4,5]\r\n}\r\n",
+							"raw": "{\r\n    \"rental\":{\r\n        \"price\":0.75,\r\n        \"date\":\"2022-03-28T17:12:57Z[UTC]\",\r\n        \"returnDate\":\"2023-03-28T17:12:57Z[UTC]\",\r\n        \"customer\":{\"id\":5,\"username\":\"ER RUVIUZ\",\"password\":\"88888888.\"}\r\n    },\r\n    \"gameIDs\":[1,2,3,4,5]\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
