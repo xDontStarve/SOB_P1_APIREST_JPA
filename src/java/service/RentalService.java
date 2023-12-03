@@ -52,18 +52,15 @@ public class RentalService extends AbstractFacade<Rental> {
         
         //Auxilar variables, gameList will get added all games in gameIDs
         Game game; List<Game> gameList = new LinkedList();
-        List<Game> auxGameList = new LinkedList(); //List to check if query result is null.
-        List<Customer> customerList = em.createNamedQuery("findCustomerById").setParameter("id", rental.getCustomer().getId()).getResultList();
+        Customer customer = em.find(Customer.class, rental.getCustomer().getId());
         
         //If customer does not exist abort.
-        if (customerList.isEmpty()) return Response.status(Response.Status.NOT_FOUND).entity("Customer with this id cannot be found.").build();
-        Customer customer = customerList.get(0); //Customer exists
+        if (customer==null) return Response.status(Response.Status.NOT_FOUND).entity("Customer with this id cannot be found.").build();
         //Set rental customer
         rental.setCustomer(customer);
         for (long id : gameIDs){
-            auxGameList = em.createNamedQuery("findGameById").setParameter("id", id).getResultList();
-            if (!auxGameList.isEmpty()){
-                game=auxGameList.get(0);
+            game=em.find(Game.class, id);
+            if (game!=null){
                 gameList.add(game);
                 rental.addGames(game);
                 game.addRental(rental);
@@ -71,7 +68,6 @@ public class RentalService extends AbstractFacade<Rental> {
             }else{
                 Response.status(Response.Status.NOT_FOUND).entity("Game with this id cannot be found.").build();
             }
-            auxGameList = new LinkedList();
         }
         rental.setGames(gameList);
         em.merge(rental);
@@ -85,12 +81,11 @@ public class RentalService extends AbstractFacade<Rental> {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getRental(@PathParam("id") Long id){
-        Query query = em.createNamedQuery("findRentalById");
-        query.setParameter("id", id);
-        if (query.getResultList().isEmpty()){
+        Rental rental = em.find(Rental.class, id);
+        if (rental==null){
             return Response.status(Response.Status.NOT_FOUND).entity("No rental found with this id.").build();
         }
-        RentalDTO rentalDTO = new RentalDTO((Rental) query.getResultList().get(0));
+        RentalDTO rentalDTO = new RentalDTO(rental);
         return Response.status(Response.Status.OK).entity(rentalDTO).build();
     }
 }

@@ -14,10 +14,6 @@ import java.io.Serializable;
  *
  * @author Jialiang Chen
  */
-@NamedQuery(
-    name="findCustomerById",
-    query="SELECT c FROM Customer c WHERE (c.id = :id)"
-)
 @XmlRootElement
 @Entity
 public class Customer implements Serializable{

@@ -18,11 +18,6 @@ import java.util.List;
  *
  * @author Jialiang Chen
  */
-@NamedQuery(
-    name="findRentalById",
-    query="SELECT r FROM Rental r WHERE (r.id = :id)"
-)
-
 @XmlRootElement
 @Entity
 public class Rental implements Serializable{
