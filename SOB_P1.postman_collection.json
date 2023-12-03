@@ -598,14 +598,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/SOB_P1_APIREST_JPA/webresources/rest/api/v1/customer/5",
+							"raw": "http://localhost:8080/projecte/webresources/rest/api/v1/customer/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"SOB_P1_APIREST_JPA",
+								"projecte",
 								"webresources",
 								"rest",
 								"api",
@@ -624,8 +624,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -652,7 +652,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"id\":69,\"username\":\"TheDestroyer420\"}",
+							"raw": "{\"id\":666,\"username\":\"TheDestroyer420\"}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -660,20 +660,20 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/SOB_P1_APIREST_JPA/webresources/rest/api/v1/customer/69",
+							"raw": "http://localhost:8080/projecte/webresources/rest/api/v1/customer/666",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"SOB_P1_APIREST_JPA",
+								"projecte",
 								"webresources",
 								"rest",
 								"api",
 								"v1",
 								"customer",
-								"69"
+								"666"
 							]
 						}
 					},
@@ -722,7 +722,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/projecte/webresources/rest/api/v1/customer/69",
+							"raw": "http://localhost:8080/projecte/webresources/rest/api/v1/customer/89823",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -735,7 +735,7 @@
 								"api",
 								"v1",
 								"customer",
-								"69"
+								"89823"
 							]
 						}
 					},
