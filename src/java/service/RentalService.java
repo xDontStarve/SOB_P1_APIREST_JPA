@@ -45,6 +45,9 @@ public class RentalService extends AbstractFacade<Rental> {
     @Produces(MediaType.APPLICATION_JSON)
     public Response postRental(RentalGamesWrapper rentalGamesWrapper){
         Rental rental = rentalGamesWrapper.getRental();
+        Customer customer = em.find(Customer.class, rental.getCustomer().getId());
+        //If customer does not exist abort.
+        if (customer==null) return Response.status(Response.Status.NOT_FOUND).entity("Customer with this id cannot be found.").build();
         super.create(rental);
         List<Long> gameIDs = rentalGamesWrapper.getGameIDs();
         //Reset List (cannot pass the entire game list in json, too expensive)
@@ -52,10 +55,6 @@ public class RentalService extends AbstractFacade<Rental> {
         
         //Auxilar variables, gameList will get added all games in gameIDs
         Game game; List<Game> gameList = new LinkedList();
-        Customer customer = em.find(Customer.class, rental.getCustomer().getId());
-        
-        //If customer does not exist abort.
-        if (customer==null) return Response.status(Response.Status.NOT_FOUND).entity("Customer with this id cannot be found.").build();
         //Set rental customer
         rental.setCustomer(customer);
         for (long id : gameIDs){
@@ -66,7 +65,7 @@ public class RentalService extends AbstractFacade<Rental> {
                 game.addRental(rental);
                 em.merge(game);
             }else{
-                Response.status(Response.Status.NOT_FOUND).entity("Game with this id cannot be found.").build();
+                return Response.status(Response.Status.NOT_FOUND).entity("Game with this id cannot be found.").build();
             }
         }
         rental.setGames(gameList);

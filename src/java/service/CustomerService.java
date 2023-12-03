@@ -68,8 +68,14 @@ public class CustomerService extends AbstractFacade<Customer> {
     public Response putCustomer(@PathParam("id") Long id, Customer c){
         Customer customer = em.find(Customer.class, id);
         if (customer==null){
-            em.persist(c);
+            //Control info provided, if new customer, password and username is required.
+            if(c.getPassword()==null || c.getUsername()==null){
+                return Response.status(Response.Status.BAD_REQUEST).entity("Missing necessary information to create customer.").build();
+            }else{
+                em.persist(c);
+            }
         }else{
+            //Edit customer with provided info.
             super.edit(c);
         }
         return Response.ok().entity(new CustomerDTO(c)).build();

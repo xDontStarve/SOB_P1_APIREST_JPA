@@ -494,6 +494,254 @@
 					"response": []
 				},
 				{
+					"name": "CUSTOMER_putById no password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "sob",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "sob",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":5,\"username\":\"ya no ser rubiuz\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/SOB_P1_APIREST_JPA/webresources/rest/api/v1/customer/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SOB_P1_APIREST_JPA",
+								"webresources",
+								"rest",
+								"api",
+								"v1",
+								"customer",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CUSTOMER_putById no username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "sob",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "sob",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":5,\"password\":\"newPassWordxd\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/SOB_P1_APIREST_JPA/webresources/rest/api/v1/customer/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SOB_P1_APIREST_JPA",
+								"webresources",
+								"rest",
+								"api",
+								"v1",
+								"customer",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CUSTOMER_putById New Customer No Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "sob",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "sob",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":69,\"username\":\"TheDestroyer420\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/SOB_P1_APIREST_JPA/webresources/rest/api/v1/customer/69",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SOB_P1_APIREST_JPA",
+								"webresources",
+								"rest",
+								"api",
+								"v1",
+								"customer",
+								"69"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CUSTOMER_putById New Customer No Username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "sob",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "sob",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":89823,\"password\":\"ILikeLeagueOfLegendsxd\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/projecte/webresources/rest/api/v1/customer/69",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"projecte",
+								"webresources",
+								"rest",
+								"api",
+								"v1",
+								"customer",
+								"69"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "CUSTOMER_putById New Customer",
 					"event": [
 						{
@@ -699,14 +947,136 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/SOB_P1_APIREST_JPA/webresources/rest/api/v1/rental",
+							"raw": "http://localhost:8080/projecte/webresources/rest/api/v1/rental",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"SOB_P1_APIREST_JPA",
+								"projecte",
+								"webresources",
+								"rest",
+								"api",
+								"v1",
+								"rental"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RENTAL_postRental Wrong Game",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "sob",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "sob",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rental\":{\r\n        \"price\":0.75,\r\n        \"date\":\"2022-03-28T17:12:57Z[UTC]\",\r\n        \"returnDate\":\"2023-03-28T17:12:57Z[UTC]\",\r\n        \"customer\":{\"id\":5,\"username\":\"ER RUVIUZ\",\"password\":\"88888888.\"}\r\n    },\r\n    \"gameIDs\":[873,673,222]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/projecte/webresources/rest/api/v1/rental",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"projecte",
+								"webresources",
+								"rest",
+								"api",
+								"v1",
+								"rental"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RENTAL_postRental Wrong Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "sob",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "sob",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rental\":{\r\n        \"price\":0.75,\r\n        \"date\":\"2022-03-28T17:12:57Z[UTC]\",\r\n        \"returnDate\":\"2023-03-28T17:12:57Z[UTC]\",\r\n        \"customer\":{\"id\":7863,\"username\":\"ER RUVIUZ\",\"password\":\"88888888.\"}\r\n    },\r\n    \"gameIDs\":[1,2,3,4,5]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/projecte/webresources/rest/api/v1/rental",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"projecte",
 								"webresources",
 								"rest",
 								"api",
