@@ -69,7 +69,7 @@ public class RentalService extends AbstractFacade<Rental> {
             }
         }
         rental.setGames(gameList);
-        em.merge(rental);
+        em.persist(rental);
         return Response.status(Response.Status.CREATED).entity(new RentalDTO(rental)).build();
     }
     

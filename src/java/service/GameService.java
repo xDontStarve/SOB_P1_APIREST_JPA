@@ -48,11 +48,15 @@ public class GameService extends AbstractFacade<Game> {
             query.setParameter("isAvailable", game.getIsAvailable());
             query.setParameter("name", game.getName());
             query.setParameter("price", game.getPrice());
+        Game foundGame;
         if (super.find(game.getId())==null && query.getResultStream().toList().isEmpty()){
             super.create(game);
             return Response.status(Response.Status.CREATED).build();
         }else{
-            return Response.status(Response.Status.CONFLICT).entity("The game already exists").build();
+            foundGame = (Game) query.getResultStream().toList().get(0);
+            foundGame.setUnits(game.getUnits());
+            em.merge(foundGame);
+            return Response.status(Response.Status.OK).entity("Added the units specified").build();
         }
     }
     

@@ -54,6 +54,7 @@ public class Game implements Serializable{
     private float price;
     private String description;
     private String address;
+    private int units;
     @Enumerated(EnumType.STRING)
     private Genre genre;
     @Enumerated(EnumType.STRING)
@@ -168,5 +169,15 @@ public class Game implements Serializable{
     public void addRental(Rental rental) {
         this.rentals.add(rental);
     }
+
+    public int getUnits() {
+        return units;
+    }
+
+    public void setUnits(int units) {
+        this.units = units;
+    }
+    
+    
     
 }
