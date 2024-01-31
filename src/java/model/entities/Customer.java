@@ -14,6 +14,11 @@ import java.io.Serializable;
  *
  * @author Jialiang Chen
  */
+
+@NamedQuery(
+    name = "findCustomerByEmail",
+    query = "SELECT c FROM Customer c WHERE (c.email = :email)"
+)
 @XmlRootElement
 @Entity
 public class Customer implements Serializable{
@@ -23,8 +28,17 @@ public class Customer implements Serializable{
     private long id;
     private String username;
     private String password;
+    private String email;
     @OneToOne(mappedBy = "customer")
     private Rental rental;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public long getId() {
         return id;

@@ -11,11 +11,21 @@ package model.entities;
 public class CustomerDTO {
     private long id;
     private String username;
+    private String email;
     public CustomerDTO(Customer customer){
         this.id=customer.getId();
         this.username=customer.getUsername();
+        this.email=customer.getEmail();
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
     public long getId() {
         return id;
     }

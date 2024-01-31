@@ -61,6 +61,21 @@ public class CustomerService extends AbstractFacade<Customer> {
         return Response.status(Response.Status.NOT_FOUND).entity("Customer with this id does not exist.").build();
     }
     
+    @GET
+    @Path("/email/{email}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCustomerByEmail(@PathParam("email") String email){
+        Query query = em.createNamedQuery("findCustomerByEmail");
+        query.setParameter("email", email);
+        if (query.getResultStream().toList().isEmpty()){
+            return Response.status(Response.Status.NOT_FOUND).entity("Customer with this email does not exist.").build();
+        }else{
+            Customer customer = (Customer) query.getResultList().get(0);
+            CustomerDTO customerDTO = new CustomerDTO(customer);
+            return Response.status(Response.Status.OK).entity(customerDTO).build();
+        }
+    }
+    
     @PUT
     @Path("/{id}")
     @Secured

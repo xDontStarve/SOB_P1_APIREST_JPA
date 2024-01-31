@@ -394,6 +394,32 @@
 					"response": []
 				},
 				{
+					"name": "CUSTOMER_getByEmail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/projecte/webresources/rest/api/v1/customer/email/sob@urv.cat",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"projecte",
+								"webresources",
+								"rest",
+								"api",
+								"v1",
+								"customer",
+								"email",
+								"sob@urv.cat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "CUSTOMER_getById Wrong",
 					"event": [
 						{
