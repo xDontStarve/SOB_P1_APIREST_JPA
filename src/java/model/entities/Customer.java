@@ -19,6 +19,12 @@ import java.io.Serializable;
     name = "findCustomerByEmail",
     query = "SELECT c FROM Customer c WHERE (c.email = :email)"
 )
+
+@NamedQuery(
+        name = "findCustomerWithPassword",
+        query = "SELECT c FROM Customer c WHERE (c.username = :username) AND (c.password = :password)"
+)
+
 @XmlRootElement
 @Entity
 public class Customer implements Serializable{

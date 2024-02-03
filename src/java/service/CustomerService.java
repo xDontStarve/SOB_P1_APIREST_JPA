@@ -76,6 +76,23 @@ public class CustomerService extends AbstractFacade<Customer> {
         }
     }
     
+    @GET
+    @Path("/login/{username}/{password}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getUserWithPassword(@PathParam("username") String username, @PathParam("password") String password){
+        Query query = em.createNamedQuery("findCustomerWithPassword");
+        query.setParameter("username", username);
+        query.setParameter("password", password);
+        
+        if (query.getResultStream().toList().isEmpty()){
+            return Response.status(Response.Status.NOT_FOUND).entity("Username or Password does not exist.").build();
+        }else{
+            Customer customer = (Customer) query.getResultList().get(0);
+            CustomerDTO customerDTO = new CustomerDTO(customer);
+            return Response.status(Response.Status.OK).entity(customerDTO).build();
+        }
+    }
+    
     @PUT
     @Path("/{id}")
     @Secured
