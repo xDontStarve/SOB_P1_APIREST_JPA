@@ -7,6 +7,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
@@ -17,6 +18,7 @@ import java.util.LinkedList;
 import java.util.List;
 import model.entities.Customer;
 import model.entities.CustomerDTO;
+import model.entities.UserBean;
 
 /**
  *
@@ -76,14 +78,14 @@ public class CustomerService extends AbstractFacade<Customer> {
         }
     }
     
-    @GET
-    @Path("/login/{username}/{password}")
+    @POST
+    @Path("/login")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getUserWithPassword(@PathParam("username") String username, @PathParam("password") String password){
+    public Response getUserWithPassword(UserBean user){
         Query query = em.createNamedQuery("findCustomerWithPassword");
-        query.setParameter("username", username);
-        query.setParameter("password", password);
-        
+        query.setParameter("username", user.getUsername());
+        query.setParameter("password", user.getPassword());
         if (query.getResultStream().toList().isEmpty()){
             return Response.status(Response.Status.NOT_FOUND).entity("Username or Password does not exist.").build();
         }else{
