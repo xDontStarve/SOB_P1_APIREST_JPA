@@ -60,6 +60,10 @@ public class RentalService extends AbstractFacade<Rental> {
         for (long id : gameIDs){
             game=em.find(Game.class, id);
             if (game!=null){
+                game.setUnits(game.getUnits()-1);
+                if (game.getUnits()==0){
+                    game.setIsAvailable(false);
+                }
                 gameList.add(game);
                 rental.addGames(game);
                 game.addRental(rental);

@@ -14,15 +14,26 @@ public class RentalDTO {
     private long id;
     private float price;
     private Date date;
+    private Date returnDate;
 
     public RentalDTO(Rental rental){
         this.id=rental.getId();
         this.price=rental.getPrice();
         this.date=rental.getDate();
+        this.returnDate=rental.getReturnDate();
     }
     public RentalDTO(){
         
     }
+
+    public Date getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(Date returnDate) {
+        this.returnDate = returnDate;
+    }
+    
     public long getId() {
         return id;
     }
